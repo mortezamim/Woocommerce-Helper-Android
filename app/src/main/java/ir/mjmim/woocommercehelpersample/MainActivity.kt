@@ -2,6 +2,7 @@ package ir.mjmim.woocommercehelpersample
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import ir.mjmim.woocommercehelper.OAuthParameters
 
 class MainActivity : AppCompatActivity() {
 

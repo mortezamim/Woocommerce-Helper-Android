@@ -1,4 +1,4 @@
-package ir.mjmim.woocommercehelper;
+package ir.mjmim.woocommercehelper.Helpers;
 
 
 import android.util.Log;
@@ -6,6 +6,8 @@ import com.aadira.library.Enums.RequestMethod;
 import com.aadira.library.Main.WCBuilder;
 import com.google.api.client.auth.oauth.OAuthHmacSigner;
 import com.google.api.client.http.GenericUrl;
+import ir.mjmim.woocommercehelper.OAuthParameters;
+
 import java.security.GeneralSecurityException;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
