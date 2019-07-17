@@ -2,19 +2,16 @@ package ir.mjmim.woocommercehelper.Main;
 
 import android.app.Application;
 import android.util.Log;
-
-import com.aadira.library.Enums.RequestMethod;
-import com.aadira.library.Helpers.Endpoints;
-import com.aadira.library.Helpers.OAuthSigner;
-import com.aadira.library.Interfaces.ListCallback;
-import com.aadira.library.Interfaces.ObjectCallback;
-import com.aadira.library.Main.WCBuilder;
-import com.aadira.library.Models.Categories;
-import com.aadira.library.Models.CategoriesParser;
-import com.aadira.library.Models.Product;
-import com.aadira.library.Models.ProductParser;
 import com.squareup.leakcanary.LeakCanary;
-
+import ir.mjmim.woocommercehelper.Enums.RequestMethod;
+import ir.mjmim.woocommercehelper.Helpers.Endpoints;
+import ir.mjmim.woocommercehelper.Helpers.OAuthSigner;
+import ir.mjmim.woocommercehelper.Interfaces.ListCallback;
+import ir.mjmim.woocommercehelper.Interfaces.ObjectCallback;
+import ir.mjmim.woocommercehelper.Models.Categories;
+import ir.mjmim.woocommercehelper.Models.CategoriesParser;
+import ir.mjmim.woocommercehelper.Models.Product;
+import ir.mjmim.woocommercehelper.Models.ProductParser;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -47,11 +44,10 @@ public class WooCommerce extends Application {
 //    private SigningMethod signing_method;
 //    private boolean loggingEnabled;
 
-    private com.aadira.library.Main.WCBuilder wcBuilder;
+    private WCBuilder wcBuilder;
 
     private OAuthSigner OAuthSigner;
     private static WooCommerce ourInstance = new WooCommerce();
-
 
 
     public static WooCommerce getInstance() {
@@ -116,7 +112,6 @@ public class WooCommerce extends Application {
 //    }
 
 
-
     private WooCommerce() {
         Log.d(TAG, "Instance created");
     }
@@ -126,7 +121,6 @@ public class WooCommerce extends Application {
         OAuthSigner = new OAuthSigner(wcBuilder);
         Log.i(TAG, "onCreate");
     }
-
 
 
     @Override
@@ -139,15 +133,15 @@ public class WooCommerce extends Application {
     private interface ProductsInterface {
 
         @GET(Endpoints.PRODUCTS_ENDPOINT + "/{id}")
-         void getProduct(@Path("id")String id,@QueryMap LinkedHashMap<String, String> options, Callback<Response> response);
+        void getProduct(@Path("id") String id, @QueryMap LinkedHashMap<String, String> options, Callback<Response> response);
 
 
         @GET(Endpoints.PRODUCTS_ENDPOINT)
-         void getProducts(@QueryMap LinkedHashMap<String, String> options, Callback<Response> response);
+        void getProducts(@QueryMap LinkedHashMap<String, String> options, Callback<Response> response);
 
 
         @GET(Endpoints.CATEGORIES_ENDPOINT)
-         void getCategories(@QueryMap LinkedHashMap<String, String> options, Callback<Response> response);
+        void getCategories(@QueryMap LinkedHashMap<String, String> options, Callback<Response> response);
     }
 
     public List<Product> getAllProducts(final ListCallback fetched) {
@@ -155,41 +149,41 @@ public class WooCommerce extends Application {
         builder.append(wcBuilder.isHttps() ? "https://" : "http://");
         builder.append(wcBuilder.getBaseUrl() + "/");
         builder.append("wc-api/v3");
-        Log.i(TAG,builder.toString());
+        Log.i(TAG, builder.toString());
         RestAdapter adapter = new RestAdapter.Builder()
                 .setEndpoint(builder.toString())
                 .build();
 
         ProductsInterface api = adapter.create(ProductsInterface.class);
 
-        api.getProducts(OAuthSigner.getSignature(RequestMethod.GET, Endpoints.PRODUCTS_ENDPOINT), new Callback<Response>() {
-            @Override
-            public void success(Response response1, Response response) {
-//                System.out.println(response1.getBody());
-//                System.out.println(response.getUrl());
-//                System.out.println(response.getStatus());
-//                System.out.println(response.getHeaders());
-                String bodyString = new String(((TypedByteArray) response.getBody()).getBytes());
-                try {
-                    JSONObject object = new JSONObject(bodyString);
-//                    System.out.println("JSON " + object);
-                    ArrayList<Product> products = new ProductParser(object).productsParser();
-//                    System.out.println(products);
-                    fetched.Callback(products, null);
-                    return;
-                } catch (JSONException e) {
-                    e.printStackTrace();
-
-                }
-            }
-
-            @Override
-            public void failure(RetrofitError error) {
-                System.out.println(error);
-                fetched.Callback(null, error);
-                return;
-            }
-        });
+//        api.getProducts(OAuthSigner.getSignature(RequestMethod.GET, Endpoints.PRODUCTS_ENDPOINT), new Callback<Response>() {
+//            @Override
+//            public void success(Response response1, Response response) {
+////                System.out.println(response1.getBody());
+////                System.out.println(response.getUrl());
+////                System.out.println(response.getStatus());
+////                System.out.println(response.getHeaders());
+//                String bodyString = new String(((TypedByteArray) response.getBody()).getBytes());
+//                try {
+//                    JSONObject object = new JSONObject(bodyString);
+////                    System.out.println("JSON " + object);
+//                    ArrayList<Product> products = new ProductParser(object).productsParser();
+////                    System.out.println(products);
+//                    fetched.Callback(products, null);
+//                    return;
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//
+//                }
+//            }
+//
+//            @Override
+//            public void failure(RetrofitError error) {
+//                System.out.println(error);
+//                fetched.Callback(null, error);
+//                return;
+//            }
+//        });
 
         return null;
     }
@@ -199,88 +193,87 @@ public class WooCommerce extends Application {
         builder.append(wcBuilder.isHttps() ? "https://" : "http://");
         builder.append(wcBuilder.getBaseUrl() + "/");
         builder.append("wc-api/v3");
-        Log.i(TAG,builder.toString());
+        Log.i(TAG, builder.toString());
         RestAdapter adapter = new RestAdapter.Builder()
                 .setEndpoint(builder.toString())
                 .build();
 
         ProductsInterface api = adapter.create(ProductsInterface.class);
 
-        api.getCategories(OAuthSigner.getSignature(RequestMethod.GET, Endpoints.CATEGORIES_ENDPOINT), new Callback<Response>() {
-            @Override
-            public void success(Response response1, Response response) {
-//                System.out.println(response1.getBody());
-//                System.out.println(response.getUrl());
-//                System.out.println(response.getStatus());
-//                System.out.println(response.getHeaders());
-                String bodyString = new String(((TypedByteArray) response.getBody()).getBytes());
-                try {
-                    JSONObject object = new JSONObject(bodyString);
-//                    System.out.println("JSON " + object);
-                    ArrayList<Categories> categories = new CategoriesParser(bodyString).categoriesParser();
-//                    System.out.println(products);
-                    fetched.Callback(categories, null);
-                    return;
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    return;
-                }
-            }
-
-            @Override
-            public void failure(RetrofitError error) {
-                System.out.println(error);
-                fetched.Callback(null, error);
-                return;
-            }
-        });
+//        api.getCategories(OAuthSigner.getSignature(RequestMethod.GET, Endpoints.CATEGORIES_ENDPOINT), new Callback<Response>() {
+//            @Override
+//            public void success(Response response1, Response response) {
+////                System.out.println(response1.getBody());
+////                System.out.println(response.getUrl());
+////                System.out.println(response.getStatus());
+////                System.out.println(response.getHeaders());
+//                String bodyString = new String(((TypedByteArray) response.getBody()).getBytes());
+//                try {
+//                    JSONObject object = new JSONObject(bodyString);
+////                    System.out.println("JSON " + object);
+//                    ArrayList<Categories> categories = new CategoriesParser(bodyString).categoriesParser();
+////                    System.out.println(products);
+//                    fetched.Callback(categories, null);
+//                    return;
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                    return;
+//                }
+//            }
+//
+//            @Override
+//            public void failure(RetrofitError error) {
+//                System.out.println(error);
+//                fetched.Callback(null, error);
+//                return;
+//            }
+//        });
 
         return null;
     }
 
-
-    public Product getProduct(String id,final ObjectCallback fetched) {
+    public Product getProduct(String id, final ObjectCallback fetched) {
         StringBuilder builder = new StringBuilder();
         builder.append(wcBuilder.isHttps() ? "https://" : "http://");
         builder.append(wcBuilder.getBaseUrl() + "/");
         builder.append("wc-api/v3");
-        Log.i(TAG,builder.toString());
+        Log.i(TAG, builder.toString());
         RestAdapter adapter = new RestAdapter.Builder()
                 .setEndpoint(builder.toString())
                 .build();
 
         ProductsInterface api = adapter.create(ProductsInterface.class);
         LinkedHashMap<String, String> options = new LinkedHashMap<String, String>();
-        options.put("id","3862");
+        options.put("id", "3862");
 
-        api.getProduct("3862", OAuthSigner.getSignature(options,RequestMethod.GET, Endpoints.PRODUCTS_ENDPOINT), new Callback<Response>() {
-            @Override
-            public void success(Response response1, Response response) {
-//                System.out.println(response1.getBody());
-//                System.out.println(response.getUrl());
-//                System.out.println(response.getStatus());
-//                System.out.println(response.getHeaders());
-                String bodyString = new String(((TypedByteArray) response.getBody()).getBytes());
-                try {
-                    JSONObject object = new JSONObject(bodyString);
-//                    System.out.println("JSON " + object);
-                    Product product = new ProductParser(object).singleProductParser();
-                    System.out.println(product);
-                    fetched.Callback(product, null);
-                    return;
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    return;
-                }
-            }
-
-            @Override
-            public void failure(RetrofitError error) {
-                System.out.println(error.getUrl());
-                fetched.Callback(null, error);
-                return;
-            }
-        });
+//        api.getProduct("3862", OAuthSigner.getSignature(options,RequestMethod.GET, Endpoints.PRODUCTS_ENDPOINT), new Callback<Response>() {
+//            @Override
+//            public void success(Response response1, Response response) {
+////                System.out.println(response1.getBody());
+////                System.out.println(response.getUrl());
+////                System.out.println(response.getStatus());
+////                System.out.println(response.getHeaders());
+//                String bodyString = new String(((TypedByteArray) response.getBody()).getBytes());
+//                try {
+//                    JSONObject object = new JSONObject(bodyString);
+////                    System.out.println("JSON " + object);
+//                    Product product = new ProductParser(object).singleProductParser();
+//                    System.out.println(product);
+//                    fetched.Callback(product, null);
+//                    return;
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                    return;
+//                }
+//            }
+//
+//            @Override
+//            public void failure(RetrofitError error) {
+//                System.out.println(error.getUrl());
+//                fetched.Callback(null, error);
+//                return;
+//            }
+//        });
 
         return null;
     }

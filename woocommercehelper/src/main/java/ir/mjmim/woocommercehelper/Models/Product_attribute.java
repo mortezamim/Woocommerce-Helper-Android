@@ -1,6 +1,5 @@
 package ir.mjmim.woocommercehelper.Models;
 
-import com.aadira.library.Models.WCObject;
 
 public class Product_attribute extends WCObject {
 

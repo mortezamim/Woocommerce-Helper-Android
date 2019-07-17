@@ -1,6 +1,5 @@
 package ir.mjmim.woocommercehelper.Models;
 
-import com.aadira.library.Models.Categories;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -10,7 +9,7 @@ import java.util.ArrayList;
 /**
  * Created by kumardivyarajat on 21/02/16.
  */
-public class CategoriesParser extends com.aadira.library.Models.Categories {
+public class CategoriesParser extends Categories {
 
     private String rawString;
 
@@ -18,8 +17,8 @@ public class CategoriesParser extends com.aadira.library.Models.Categories {
         this.rawString = rawString;
     }
 
-    public ArrayList<com.aadira.library.Models.Categories> categoriesParser() throws JSONException {
-        ArrayList<com.aadira.library.Models.Categories> categoriesArrayList = new ArrayList<>();
+    public ArrayList<Categories> categoriesParser() throws JSONException {
+        ArrayList<Categories> categoriesArrayList = new ArrayList<>();
 
         JSONObject object = new JSONObject(rawString);
 //        A.logDebugMessage("1" + object.toString());
@@ -28,7 +27,7 @@ public class CategoriesParser extends com.aadira.library.Models.Categories {
 
         for(int i = 0; i < array.length(); i++ ) {
             JSONObject object1 = array.getJSONObject(i);
-            com.aadira.library.Models.Categories categories = new Categories();
+            Categories categories = new Categories();
             categories.id = object1.getLong("id");
             categories.name = object1.getString("name");
             categories.count = object1.getInt("count");

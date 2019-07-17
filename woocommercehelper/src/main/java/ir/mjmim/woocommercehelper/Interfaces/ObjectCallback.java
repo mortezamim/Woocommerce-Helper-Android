@@ -1,7 +1,6 @@
 package ir.mjmim.woocommercehelper.Interfaces;
 
-import com.aadira.library.Models.Product;
-
+import ir.mjmim.woocommercehelper.Models.Product;
 import retrofit.RetrofitError;
 
 /**

@@ -2,7 +2,6 @@ package ir.mjmim.woocommercehelper.Models;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import com.aadira.library.Models.WCObject;
 
 import java.util.Date;
 

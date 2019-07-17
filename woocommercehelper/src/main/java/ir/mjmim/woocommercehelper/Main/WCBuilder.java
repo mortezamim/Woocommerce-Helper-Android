@@ -1,6 +1,6 @@
 package ir.mjmim.woocommercehelper.Main;
 
-import com.aadira.library.Enums.SigningMethod;
+import ir.mjmim.woocommercehelper.Enums.SigningMethod;
 
 /**
  * Created by kumardivyarajat on 23/02/16.

@@ -2,10 +2,10 @@ package ir.mjmim.woocommercehelper.Helpers;
 
 
 import android.util.Log;
-import com.aadira.library.Enums.RequestMethod;
-import com.aadira.library.Main.WCBuilder;
 import com.google.api.client.auth.oauth.OAuthHmacSigner;
 import com.google.api.client.http.GenericUrl;
+import ir.mjmim.woocommercehelper.Enums.RequestMethod;
+import ir.mjmim.woocommercehelper.Main.WCBuilder;
 import ir.mjmim.woocommercehelper.OAuthParameters;
 
 import java.security.GeneralSecurityException;
