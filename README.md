@@ -54,19 +54,19 @@ We offer jitpack installation.
 			
 			//create WooBuilder
                 val wooBuilder = WooBuilder().apply {
-		//make it false if you don't have ssl
-		isHttps = true  
+			//make it false if you don't have ssl
+			isHttps = true  
 		
-		//example : "mj-dev.ir/wp-json/wc/v3"
-		baseUrl = "YOUR URL"  
+			//example : "mj-dev.ir/wp-json/wc/v3"
+			baseUrl = "YOUR URL"  
 		
-		signing_method = SigningMethod.HMACSHA1
+			signing_method = SigningMethod.HMACSHA1
 		
-		//replace by your key
-		wc_key = "CUSTOMER_KEY"
+			//replace by your key
+			wc_key = "CUSTOMER_KEY"
 		 
-		 //replace by your key
-		 wc_secret = "CUSTOMER_SECRET"
+		 	//replace by your key
+		 	wc_secret = "CUSTOMER_SECRET"
                 }
 
                         //lets generate new request link to get products
