@@ -4,7 +4,7 @@
 
 Very lightweight library to help you communicate with Woocommerce  **REST API** 
 
-So far you can generate **Request Link**
+So far you can generate **Request Link** with **OAuth 1.0**
 
   <img src="https://github.com/mortezamim/Woocommerce-Helper-Android/blob/master/assets/logo.png?raw=true"/>
 
