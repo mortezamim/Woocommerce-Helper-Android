@@ -6,7 +6,7 @@ Very lightweight library to help you communicate with Woocommerce  **REST API**
 
 So far you can generate **Request Link**
 
-  <img src="https://cdn1.imggmi.com/uploads/2019/7/18/846add12d43a72962d2d497f11f3db16-full.png"/>
+  <img src="asset/logo.png"/>
 
 
 ## Installation
