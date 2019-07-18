@@ -36,8 +36,8 @@ We offer jitpack installation.
   
 4. Create a new Kotlin Class which extends the Application Class or if you already have one created, just put the following lines in there.
 
-	class MainActivity : AppCompatActivity() {  
-		override fun onCreate(savedInstanceState: Bundle?) {  
+		class MainActivity : AppCompatActivity() {  
+			override fun onCreate(savedInstanceState: Bundle?) {  
 			super.onCreate(savedInstanceState)  
 			setContentView(R.layout.activity_main)
 			
