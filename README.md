@@ -34,7 +34,7 @@ We offer jitpack installation.
 
 3. Sync the project with the gradle files. The library should be imported to your project.
   
-4. Create a new Kotlin Class which extends the Application Class or if you already have one created, just put the following lines in there.
+4. just put the following lines in your app.
 
 		class MainActivity : AppCompatActivity() {  
 			override fun onCreate(savedInstanceState: Bundle?) {  
