@@ -1,6 +1,6 @@
 # Woocommerce-Helper-Android
 
-  
+-   Kotlin - **1.3.41**
 
 Very lightweight library to help you communicate with Woocommerce  **REST API** 
 
@@ -11,7 +11,6 @@ So far you can generate **Request Link**
 
 ## Installation
 We offer jitpack installation.
--   Kotlin - **1.3.41**
 
 1. In your module level/app level build.gradle file, add the following lines
 
@@ -55,25 +54,25 @@ We offer jitpack installation.
 		                    .
 		             }
 
-				//create WooBuilder
-				val wooBuilder = WooBuilder().apply {
-						isHttps = true  //make it false if you don't have ssl
+			//create WooBuilder
+			val wooBuilder = WooBuilder().apply {
+					isHttps = true  //make it false if you don't have ssl
 							
-						baseUrl = "YOUR URL"    //example : "mj-dev.ir/wp-json/wc/v3"
+					baseUrl = "YOUR URL"    //example : "mj-dev.ir/wp-json/wc/v3"
 							
-						signing_method = SigningMethod.HMACSHA1
+					signing_method = SigningMethod.HMACSHA1
 							
-						wc_key = "CUSTOMER_KEY" //replace by your key
+					wc_key = "CUSTOMER_KEY" //replace by your key
 							
-						wc_secret = "CUSTOMER_SECRET" //replace by your key
-				}
+					wc_secret = "CUSTOMER_SECRET" //replace by your key
+			}
 
-				//lets generate new request link to get products
-				val resultLink: String? = OAuthSigner(wooBuilder).getSignature(RequestMethod.GET, "/products", params)
+			//lets generate new request link to get products
+			val resultLink: String? = OAuthSigner(wooBuilder).getSignature(RequestMethod.GET, "/products", params)
 					
-				// use Http Request library to fetch data from generated link in result
+			// use Http Request library to fetch data from generated link in result
 					
-                }
+            }
         }
 
 ## Goals
