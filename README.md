@@ -1,6 +1,7 @@
 # Woocommerce-Helper-Android
 
 -   Kotlin - **1.3.41**
+-   CURRENT_VERSION - **0.0.6**
 
 Very lightweight library to help you communicate with Woocommerce  **REST API** 
 
