@@ -36,42 +36,39 @@ We offer jitpack installation.
   
 4. Create a new Kotlin Class which extends the Application Class or if you already have one created, just put the following lines in there.
 
-		class MainActivity : AppCompatActivity() {  
-		
-			   override fun onCreate(savedInstanceState: Bundle?) {  
-				    super.onCreate(savedInstanceState)  
-				    setContentView(R.layout.activity_main)
-        
-                    .
-                    .
-                    .
-                    
-                   //create params
-                    val params = HashMap<String, String>().apply {
-		                    put("param_1", "VALUE")
-		                    put("param_2", "VALUE")
-		                    .
-		                    .
-		             }
-
-			//create WooBuilder
-			val wooBuilder = WooBuilder().apply {
-				isHttps = true  //make it false if you don't have ssl
-							
-				baseUrl = "YOUR URL"    //example : "mj-dev.ir/wp-json/wc/v3"
-							
-				signing_method = SigningMethod.HMACSHA1
-							
-				wc_key = "CUSTOMER_KEY" //replace by your key
-							
-				wc_secret = "CUSTOMER_SECRET" //replace by your key
+	class MainActivity : AppCompatActivity() {  
+		override fun onCreate(savedInstanceState: Bundle?) {  
+			super.onCreate(savedInstanceState)  
+			setContentView(R.layout.activity_main)
+			
+                    	.
+			.
+			.
+			//create params
+			val params = HashMap<String, String>().apply {
+				put("param_1", "VALUE")
+				put("param_2", "VALUE")
+				.
+				.
 			}
+			
+			//create WooBuilder
+                        val wooBuilder = WooBuilder().apply {
+                                isHttps = true  //make it false if you don't have ssl
+							
+                                baseUrl = "YOUR URL"    //example : "mj-dev.ir/wp-json/wc/v3"
+							
+                                signing_method = SigningMethod.HMACSHA1
+							
+                                wc_key = "CUSTOMER_KEY" //replace by your key
+							
+                                wc_secret = "CUSTOMER_SECRET" //replace by your key
+                        }
 
-			//lets generate new request link to get products
-			val resultLink: String? = OAuthSigner(wooBuilder).getSignature(RequestMethod.GET, "/products", params)
-					
-			// use Http Request library to fetch data from generated link in result
-					
+                        //lets generate new request link to get products
+                        val resultLink: String? = OAuthSigner(wooBuilder).getSignature(RequestMethod.GET, "/products", params)
+        		
+			// use Http Request library to fetch data from generated link in result		
             }
         }
 
