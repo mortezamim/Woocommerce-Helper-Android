@@ -1,7 +1,7 @@
 # Woocommerce-Helper-Android
 
 -   Kotlin - **1.3.41**
--   CURRENT_VERSION - **0.0.6**
+-   Version - **0.0.6**
 
 Very lightweight library to help you communicate with Woocommerce  **REST API** 
 
@@ -29,7 +29,7 @@ We offer jitpack installation.
         dependencies {
             .
             .
-            def woo_helper_version = "CURRENT_VERSION"
+            def woo_helper_version = "0.0.6"
             implementation "com.github.mortezamim:Woocommerce-Helper-Android:$woo_helper_version"
         }
 
