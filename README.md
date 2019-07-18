@@ -79,3 +79,4 @@ We offer jitpack installation.
 ## Goals
 - Add inside request to fetch data
 - Add [Gson](https://github.com/google/gson) to parse data
+- Add Sample App
