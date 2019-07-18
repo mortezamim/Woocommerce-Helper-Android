@@ -67,7 +67,7 @@ We offer jitpack installation.
 
                         //lets generate new request link to get products
                         val resultLink: String? = OAuthSigner(wooBuilder)
-				.getSignature(RequestMethod.GET, "/products", params)
+					.getSignature(RequestMethod.GET, "/products", params)
         		
 			// use Http Request library to fetch data from generated link in result		
             }
