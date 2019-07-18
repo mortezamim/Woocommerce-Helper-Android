@@ -2,10 +2,10 @@ package ir.mjmim.woocommercehelpersample
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import ir.mjmim.woocommercehelper.Enums.RequestMethod
-import ir.mjmim.woocommercehelper.Enums.SigningMethod
-import ir.mjmim.woocommercehelper.Helpers.OAuthSigner
-import ir.mjmim.woocommercehelper.Main.WCBuilder
+import ir.mjmim.woocommercehelper.enums.RequestMethod
+import ir.mjmim.woocommercehelper.enums.SigningMethod
+import ir.mjmim.woocommercehelper.helpers.OAuthSigner
+import ir.mjmim.woocommercehelper.main.WooBuilder
 
 class MainActivity : AppCompatActivity() {
 
@@ -13,14 +13,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-       val wcBuilder = WCBuilder().apply {
-            setIsHttps(Const.isHttp)
-            baseUrl = Const.CORE_PATH
-            signing_method = SigningMethod.HMACSHA1
-            wc_key = Const.CUSTOMER_KEY
-            wc_secret = Const.CUSTOMER_SECRET
-        }
-        val res = OAuthSigner(wcBuilder).getSignature(RequestMethod.GET, "${api.path}/$urlMeta", params)
+//       val wcBuilder = WooBuilder().apply {
+//            isHttps = Const.isHttp
+//            baseUrl = Const.CORE_PATH
+//            signing_method = SigningMethod.HMACSHA1
+//            wc_key = Const.CUSTOMER_KEY
+//            wc_secret = Const.CUSTOMER_SECRET
+//        }
+//        val res = OAuthSigner(wcBuilder).getSignature(RequestMethod.GET, "${api.path}/$urlMeta", params)
     }
 }

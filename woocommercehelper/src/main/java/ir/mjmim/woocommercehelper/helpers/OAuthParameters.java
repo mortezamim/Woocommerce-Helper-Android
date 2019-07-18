@@ -1,4 +1,4 @@
-package ir.mjmim.woocommercehelper;
+package ir.mjmim.woocommercehelper.helpers;
 
 import com.google.api.client.auth.oauth.OAuthSigner;
 import com.google.api.client.http.GenericUrl;
@@ -21,7 +21,7 @@ public final class OAuthParameters implements HttpExecuteInterceptor, HttpReques
 
   private static final SecureRandom RANDOM = new SecureRandom();
   private static final PercentEscaper ESCAPER = new PercentEscaper("-_.~", false);
-  public com.google.api.client.auth.oauth.OAuthSigner signer;
+  public OAuthSigner signer;
   public String callback;
   public String consumerKey;
   public String nonce;
