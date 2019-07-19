@@ -1,5 +1,7 @@
 # Woocommerce-Helper-Android
 
+[![](https://jitpack.io/v/mortezamim/Woocommerce-Helper-Android.svg)](https://jitpack.io/#mortezamim/Woocommerce-Helper-Android)
+
 -   Kotlin - **1.3.41**
 -   Version - **0.0.6**
 
@@ -20,7 +22,7 @@ We offer jitpack installation.
 		        google()
 	            jcenter()
           
-				 maven { url 'https://jitpack.io' }
+			     maven { url 'https://jitpack.io' }
 		       }
 		}
 		
@@ -29,7 +31,7 @@ We offer jitpack installation.
         dependencies {
             .
             .
-            def woo_helper_version = "0.0.6"
+            def woo_helper_version = "latest_version"
             implementation "com.github.mortezamim:Woocommerce-Helper-Android:$woo_helper_version"
         }
 
